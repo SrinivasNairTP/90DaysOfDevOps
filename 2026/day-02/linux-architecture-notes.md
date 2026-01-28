@@ -13,3 +13,6 @@ commands like ps,top,jobs helps to monitor process
 systemd is the first user space process started bt kernel - pid1
 controls system boot,services,logging and state
 
+daily commands to be used
+ps a,ps aux,top, systmctl start/stop/status,grep
+
