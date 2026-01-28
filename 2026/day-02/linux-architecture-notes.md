@@ -16,3 +16,8 @@ controls system boot,services,logging and state
 daily commands to be used
 ps a,ps aux,top, systmctl start/stop/status,grep
 
+ps- list the process
+ps a -list active process running
+ps aux - list all the process running on the system
+top - list the TOP processes in terms of CPU,Memory and Load
+
