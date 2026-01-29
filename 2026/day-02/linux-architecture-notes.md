@@ -1,24 +1,43 @@
-Kernel is the heart of Linux that manages system and hardware resources
-User space where applications are run with limited previliges
-systemd init system that control services and boot processes
+# Linux Architecture Notes
 
-Boot flow
-BIOS->Boot Loader->Kernel loads into memory->Kernel starts systemd->systemd starts services->user gets login prompt
+## Overview
+- Linux is split into kernel space and user space.
+- The kernel manages hardware, drivers, memory, processes, and system resources.
+- User space contains applications and services that run with restricted privileges.
 
-A process is program in execution
-states inlclude create->ready->running->sleeping->stopped->zombie->terminated
+## Kernel
+- The core of the OS responsible for scheduling, memory management, drivers, and system calls.
 
-commands like ps,top,jobs helps to monitor process
+## init / systemd
+- `systemd` is a user-space init system (PID 1) commonly used to control boot, services, logging, and system state.
 
-systemd is the first user space process started bt kernel - pid1
-controls system boot,services,logging and state
+## Boot flow
+BIOS/UEFI -> Boot loader (GRUB, etc.) -> Kernel loads into memory -> Kernel starts `systemd` (PID 1) -> `systemd` starts services -> login prompt / user session
 
-daily commands to be used
-ps a,ps aux,top, systmctl start/stop/status,grep
+## Processes
+- A process is a program in execution.
+- Process lifecycle / common states:
+    - `created` (new)
+    - `ready` (runnable)
+    - `running` (CPU scheduled)
+    - `sleeping` (waiting/blocking; interruptible or uninterruptible)
+    - `stopped` (paused, e.g., by a signal)
+    - `zombie` (exited but not reaped by parent)
+    - `terminated` (fully exited and cleaned up)
 
-ps- list the process
-ps a -list active process running
-ps aux - list all the process running on the system
-top - list the TOP processes in terms of CPU,Memory and Load
+## Monitoring and daily commands
+- `ps` — report snapshot of current processes
+    - `ps a` — list processes associated with terminals
+    - `ps aux` — list all processes with details (user, CPU, memory, start time, command)
+- `top` — interactive, real-time view of top CPU/memory consumers
+- `htop` — improved interactive viewer (if installed)
+- `jobs` — list background jobs in the current shell
+- `systemctl start|stop|status <service>` — manage systemd services
+- `journalctl -b` — view systemd logs for the current boot
+- `grep` — filter command output (e.g., `ps aux | grep <pattern>`)
 
-ps aux list all the processes
+Notes:
+- Use `man <command>` for detailed options (e.g., `man ps`, `man systemctl`).
+- Combine commands and filters to find specific processes or troubleshoot services.
+- Remember `systemd` logs are accessible via `journalctl`, which is critical for debugging boot and service issues.
+
