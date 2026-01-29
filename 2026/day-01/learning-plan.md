@@ -1,13 +1,25 @@
-Devops is all about streamlining the process between development and operations
+# DevOps Learning Plan
 
-I want to upskill myself and get places in a good role at a good company 
+## Objective
+Upskill to move into a stronger role at a reputable company by practicing consistently and building practical projects.
 
-A good and better position than my current role could offer
+## Core skills to learn
+- Linux (shell, system administration, networking basics)  
+- Automation & CI/CD (scripting, pipeline design, Git/GitOps)  
+- Containers & orchestration (Docker, Kubernetes)  
+- Configuration management (Ansible)
 
-I will keep practicing every single day with consistency and discipline
+## 3 clear goals
+1. Build a production-ready CI/CD pipeline for infrastructure automation (IaC + pipeline + testing + secrets management).  
+2. Deploy a real application to Kubernetes (from repo → container → cluster, include rollbacks).  
+3. Implement configuration management with Ansible across multiple environments.
 
-3 core devops skills I would like to learn is Linux,Automation and Building pipelines,kubernetes and Docker
+## Study plan & commitment
+- Weekdays: 2 hours per day  
+- Weekends: 4 hours per day  
+- Practice daily with consistency and discipline.  
+- Track progress with weekly checkpoints and small, deliverable projects.
 
-3 clear goals would be develop a CI/CD pipeline which for infrastrucutre automation production ready and deploy an application on kubernetes and configuration management through Ansible
-
-I will allocate myself 2 hours on week-days and 4 hours on weekends
+## Notes
+- Focus on hands-on labs and one project at a time.  
+- Document what you learn and store configs in version control.
