@@ -21,3 +21,4 @@ ps a -list active process running
 ps aux - list all the process running on the system
 top - list the TOP processes in terms of CPU,Memory and Load
 
+ps aux list all the processes
