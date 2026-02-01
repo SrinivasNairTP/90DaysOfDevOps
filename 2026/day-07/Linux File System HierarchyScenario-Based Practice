@@ -1,0 +1,63 @@
+Linux File System Hierarchy
+
+/ (root) - the statinmh point of everything
+when I list the diretories inside root I get the following diretories
+
+ls -al
+
+/bin /user/sbin - Essential and user command binaries (contains user commands such as cat,chmod,chown etc)
+/boot - Contains files needed for booting including kernel (contains efi and grub)
+/dev - Device files representing hardware
+/etc - System-wide configuration files
+/home - contains user personal directories
+/media & /mount - mount points for temporary/removable media
+/opt - Optional or third party packages
+/proc - provides real time dynamic info about running processes
+/tmp -temporary file often cleared during reboot
+/var - variable data files like logs (/var/log) mails and databases 
+/user - user related programs,libraries and documentation
+/lib & /usr/lib - shared libraries
+
+when run du -sh /var/log/* 2>/dev/null | sort -h | tail -5 the largest file is /var/log/journal which is 50M
+
+when we go /cat/etc/hostname we get to see the hostname
+
+when we run ls -al ~ we get to see all the files and directories including the hidden ones
+
+gives the . and .. → current and parent directory. Parent is owned by root:root (normal).
+.bash_history (-rw-------) → command history; only readable by the user (good).
+.bashrc, .profile, .bash_logout → shell startup/logout scripts (where environment and aliases are set).
+.cache and .config (drwx------) → per-user app caches/configs (restricted access).
+.ssh (drwx------) → SSH directory (must be 700). Check inside for authorized_keys, private keys (should be 600).
+.sudo_as_admin_successful (size 0) → marker file created after using sudo (harmless).
+practice.txt, this → regular user files (sizes and timestamps visible).
+
+
+[scenario 1] - Service not starting
+run systemctl status nginx
+ngnix was in stopped state
+check for logs in journalctl didnt find any entries
+run sudo update and sudo apt install ngnix
+after installation checked for ngnix service status using systemctl status ngnix was in start state
+
+[scenario 2] - High CPU usage
+check the status using systemctl command
+check if service is enabled using systemctl 
+start the service if in stopped state using systemctl
+
+[scenario 3] - Application server is slow
+check for process consuming high CPU using top and htop
+get the pid of process using pgrep
+kill the process consuming more memory
+
+[scenario 4] - collect the logs of a sercvice
+first check status of the service using systemctl satus <service-name>
+Logs of a service can be fetched by journalctl command
+journalctl -u <service-name> - 50 view last 50 lines of logs
+journalctl -u <service-name> -f view logs in real time
+
+[scenaorio 5] - script at /usr/home/backup.sh is not running
+first check permission on the filr backup.sh using ls -l backup.sh command
+if there is no X on the file change the file permission using chmod 700 backup.sh 
+try to run the file once permission is set it should work
+
