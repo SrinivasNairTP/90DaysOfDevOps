@@ -84,3 +84,47 @@ S3 bucket created in AWS
 
 Ec2 instance created in AWS with tage "TerraWeek-Day1"
 ![alt text](image-7.png)
+
+Terraform Show: Shows the contents of tf.state file
+
+terraform state list: gives the resources that was created 
+![alt text](image-8.png)
+
+
+terraform state show aws_s3_bucket.s3_bucket_31_03_2026
+
+gives the full resource information created from state file here it gives the full info of s3_bucket_31_03_2026 created
+
+![alt text](image-9.png)
+
+terraform state show aws_instance.my_instance
+
+gives full info of instance created
+![alt text](image-10.png)
+
+### Task 6: Modify, Plan, and Destroy
+changed main.tf tag to "TerrWeek-Modified"
+
+the tag is modifies with ~ where ever the modifications apply
+
+![alt text](image-11.png)
+
+changes made 
+![alt text](image-12.png)
+
+tags got changed in AWS console
+![alt text](image-13.png)
+
+destroy the resources created using single command
+
+terraform destroy
+s3 bukcet and instance will be destroyed as shown in prompt
+![alt text](image-14.png)
+
+![alt text](image-15.png)
+
+verify in AWS console
+
+![alt text](image-16.png)
+
+![alt text](image-17.png)
