@@ -1,0 +1,15 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: my-sql-pod
+  labels:
+    app: mysql
+    environment: test
+    team: DB
+spec:
+  containers:
+   - name: musql
+     image: mysql:latest
+     env:
+      - name: MYSQL_ROOT_PASSWORD
+        value: "Test@1234"
