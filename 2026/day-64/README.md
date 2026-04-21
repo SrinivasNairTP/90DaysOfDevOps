@@ -51,12 +51,7 @@ aws s3api put-bucket-versioning \
   --versioning-configuration Status=Enabled
 
 # Create DynamoDB table for state locking
-aws dynamodb create-table \
-  --table-name terraweek-state-lock \
-  --attribute-definitions AttributeName=LockID,AttributeType=S \
-  --key-schema AttributeName=LockID,KeyType=HASH \
-  --billing-mode PAY_PER_REQUEST \
-  --region ap-south-1
+aws dynamodb create-table --table-name terraweek-state-lock --attribute-definitions AttributeName=LockID,AttributeType=S --key-schema AttributeName=LockID,KeyType=HASH --billing-mode PAY_PER_REQUEST --region ap-south-1
 ```
 
 2. Add the backend block to your Terraform config:
@@ -180,7 +175,9 @@ You should see a **diff** -- Terraform detects that reality no longer matches th
 ## Hints
 - S3 bucket names must be globally unique
 - DynamoDB table must have a `LockID` string key -- this is what Terraform uses for locking
-- `terraform init -migrate-state` explicitly triggers state migration
+- `terraform init -migrate-state-
+
+` explicitly triggers state migration
 - `terraform refresh` (or `terraform apply -refresh-only`) updates state to match real infrastructure without making changes
 - State locking only works with backends that support it (S3+DynamoDB, Consul, Terraform Cloud)
 - `terraform force-unlock` should only be used when you are sure no other operation is running
